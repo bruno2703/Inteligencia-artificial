@@ -1,3 +1,3 @@
 # Inteligencia-artificial
 Repositório da cadeira de INTELIGÊNCIA ARTIFICIAL 2022.2
-Codigos de atividade
+Aqui iram ficar os codigos das atividades passadas em aula.
