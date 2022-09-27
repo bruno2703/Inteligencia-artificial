@@ -72,7 +72,7 @@ public class SearchInWidth {
                 return true;
             }
         }
-        //Cheking exploiters
+        //Checking exploiters
         for(int k=0; k<exploiters.size(); k++){
             if(exploiters.get(k).getCityName().equals(state.getCityName())){
                 return true;
