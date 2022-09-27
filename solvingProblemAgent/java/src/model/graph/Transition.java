@@ -16,6 +16,5 @@ public class Transition {
     }
     public String toString(){
         return "Destination: "+this.nextCity.getCityName()+" - Cost: "+this.cost;
-        //return "Ola";
     }
 }

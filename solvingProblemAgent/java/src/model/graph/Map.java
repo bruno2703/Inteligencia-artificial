@@ -1,6 +1,7 @@
 package src.model.graph;
 
 import java.util.ArrayList;
+import src.model.validation.ValidateCityName;
 
 public class Map {
     private ArrayList<State> listOfStates;
@@ -12,26 +13,18 @@ public class Map {
         }
     }
     public boolean initializeAdjacentList(String cityName, int[] costList, String[] adjacencies){
-        boolean validCity = false;
-        int currentIndex = 0;
-        for(int k=0; k<this.listOfStates.size(); k++){
-            if(this.listOfStates.get(k).getCityName().equals(cityName)){
-                validCity = true;
-                currentIndex = k;
-                break;
-            }
-        }
-        if(validCity){
-            for(int k=0; k<this.listOfStates.size(); k++){
-                for(int j=0; j<adjacencies.length; j++){
-                    if(this.listOfStates.get(k).getCityName().equals(adjacencies[j])){
-                        this.listOfStates.get(currentIndex).getAdjacentList().add(new Transition(this.listOfStates.get(k), costList[j]));
-                        break;
-                    }
+        ValidateCityName validateCityName = new ValidateCityName();
+        int indexCityName = validateCityName.validate(this.listOfStates, cityName);
+        if(indexCityName != -1){
+            for(int k=0; k<adjacencies.length; k++){
+                int adjacencyIndex = validateCityName.validate(this.listOfStates, adjacencies[k]);
+                if(adjacencyIndex != -1){
+                    this.listOfStates.get(indexCityName).getAdjacentList().add(new Transition(this.listOfStates.get(adjacencyIndex), costList[k]));
                 }
             }
+            return true;
         }
-        return validCity;
+        return false;
     }
     public ArrayList<State> getListOfStates(){
         return this.listOfStates;
