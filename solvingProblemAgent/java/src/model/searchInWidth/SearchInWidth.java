@@ -53,7 +53,6 @@ public class SearchInWidth {
                 }
            }
            Node currentParent = recursiveSearch(destinationState, solution);
-           //System.out.println(currentParent.getState().getCityName()+"\n");
            if(currentParent != null){
                 if(currentParent.getFather().getState().getCityName().equals(parentNode.getState().getCityName())){
                     solution.getPath().add(currentParent.getState());
