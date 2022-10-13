@@ -1,7 +1,8 @@
-package src.model.searchInWidth;
+package src.searchStructures;
 
-import src.model.graph.State;
 import java.util.Stack;
+
+import src.graph.State;
 
 public class Solution {
     private Stack<State> path;
@@ -25,13 +26,17 @@ public class Solution {
         this.cost = cost;
     }
     public String toString(){
-        String s = "Total cost: "+this.cost+"\n";
+        String string = "Total cost: "+this.cost+"\n";
         int pathSize = path.size();
-        for(int k=0; k<pathSize-1; k++){
-            s+=this.path.peek().getCityName()+" -> ";
-            this.path.pop();
+        if(pathSize != 0){
+            for(int index=0; index<pathSize-1; index++){
+                string+=this.path.peek().getCityName()+" -> ";
+                this.path.pop();
+            }
+            string+=this.path.peek().getCityName();
+        }else{
+            string+="No path found";
         }
-        s+=this.path.peek().getCityName();
-        return s;
+        return string;
     }
 }

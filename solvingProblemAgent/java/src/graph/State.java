@@ -1,4 +1,4 @@
-package src.model.graph;
+package src.graph;
 
 import java.util.ArrayList;
 
@@ -17,10 +17,10 @@ public class State {
         return this.adjacentList;
     }
     public String toString(){
-        String s = "State: "+this.cityName+"\n";
-        for(int k=0; k<this.adjacentList.size(); k++){
-            s+="\t"+adjacentList.get(k).toString()+"\n";
+        String string = "State: "+this.cityName+"\n";
+        for(Transition currentTransition: this.adjacentList){
+            string+=currentTransition.toString()+"\n";
         }
-        return s;
+        return string;
     }
 }

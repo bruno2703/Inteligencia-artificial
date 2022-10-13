@@ -1,6 +1,6 @@
-package src.model.searchInWidth;
+package src.searchStructures;
 
-import src.model.graph.State;
+import src.graph.State;
 
 public class Node {
     private Node father;

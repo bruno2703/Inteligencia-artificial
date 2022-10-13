@@ -1,4 +1,4 @@
-package src.model.graph;
+package src.graph;
 
 public class Transition {
     private State nextCity;
