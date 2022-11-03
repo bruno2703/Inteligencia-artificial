@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
+import src.auxiliarySearchStructures.Solution;
 import src.graph.Map;
-import src.search.DepthSearch;
-import src.search.SearchInWidth;
-import src.search.UniformCostSearch;
-import src.searchStructures.Solution;
+import src.searchAlgorithms.DepthSearch;
+import src.searchAlgorithms.SearchInWidth;
+import src.searchAlgorithms.UniformCostSearch;
 
 public class Main {
     public static void main(String[] args){
@@ -34,21 +34,21 @@ public class Main {
         romaniaMap.initializeAdjacentList("Vaslui", new int[]{142, 92}, new String[]{"Urziceni", "Iasi"});
         romaniaMap.initializeAdjacentList("Iasi", new int[]{92, 87}, new String[]{"Vaslui", "Neamt"});
         romaniaMap.initializeAdjacentList("Neamt", new int[]{87}, new String[]{"Iasi"});
-        Scanner reader = new Scanner(System.in);
+        //Scanner reader = new Scanner(System.in);
         SearchInWidth searchInWidth = new SearchInWidth();
         UniformCostSearch uniformCostSearch = new UniformCostSearch();
         DepthSearch depthSearch = new DepthSearch();
-        System.out.print("\nEnter the target state: ");
-        String destination = reader.nextLine();
+        //System.out.print("\nEnter the target state: ");
+        //String destination = reader.nextLine();
         //Search in width result
-        Solution solution = searchInWidth.performSearch(romaniaMap, "Arad", destination);
+        Solution solution = searchInWidth.performSearch(romaniaMap, args[0], "Bucharest");
         System.out.println("\nSearch in width: "+solution.toString()+"\n");
         //Uniform cost search result
-        solution = uniformCostSearch.performSearch(romaniaMap, "Arad", destination);
-        System.out.println("Uniform cost search: "+solution.toString()+"\n");
+        //solution = uniformCostSearch.performSearch(romaniaMap, "Arad", destination);
+        //System.out.println("Uniform cost search: "+solution.toString()+"\n");
         //Depth search result
-        solution = depthSearch.performSearch(romaniaMap, "Arad", destination);
+        //solution = depthSearch.performSearch(romaniaMap, "Arad", destination);
         System.out.println("Depth search: "+solution.toString());
-        reader.close();
+        //reader.close();
     }
 }

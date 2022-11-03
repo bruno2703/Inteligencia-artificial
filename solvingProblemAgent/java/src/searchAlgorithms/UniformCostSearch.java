@@ -1,13 +1,13 @@
-package src.search;
+package src.searchAlgorithms;
 
 import java.util.ArrayList;
 
+import src.auxiliarySearchStructures.Node;
+import src.auxiliarySearchStructures.PriorityList;
+import src.auxiliarySearchStructures.Solution;
 import src.graph.Map;
 import src.graph.State;
 import src.graph.Transition;
-import src.searchStructures.Node;
-import src.searchStructures.PriorityList;
-import src.searchStructures.Solution;
 
 public class UniformCostSearch{
     private PriorityList edge;
@@ -25,6 +25,7 @@ public class UniformCostSearch{
             //Starting queue
             this.edge.add(new Node(null, startingPointState, 0));
             Node currentNode = recursiveSearch(destinationState, solution);
+            System.out.println("Aqui");
             if(currentNode != null){
                 solution.getPath().add(currentNode.getState());
             }
@@ -53,6 +54,7 @@ public class UniformCostSearch{
                 }
            }
            Node currentParent = recursiveSearch(destinationState, solution);
+           System.out.println(parentNode.getState().getCityName());
            if(currentParent != null){
                 if(currentParent.getFather().getState().equals(parentNode.getState())){
                     solution.getPath().add(currentParent.getState());

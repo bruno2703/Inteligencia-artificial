@@ -1,4 +1,4 @@
-package src.searchStructures;
+package src.auxiliarySearchStructures;
 
 import java.util.Stack;
 

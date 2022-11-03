@@ -1,4 +1,4 @@
-package src.searchStructures;
+package src.auxiliarySearchStructures;
 
 import java.util.ArrayList;
 
@@ -9,14 +9,14 @@ public class PriorityList {
         this.list = new ArrayList<Node>();
     }
     public Node remove(){
-        int minInt = Integer.MAX_VALUE, indexOfHigherPriority = 0;
+        /* int minInt = Integer.MAX_VALUE, indexOfHigherPriority = 0;
         for(int index=0; index<this.list.size(); index++){
             if(this.list.get(index).getCost() < minInt){
                 indexOfHigherPriority = index;
                 minInt = this.list.get(index).getCost();
             }
-        }
-        return this.list.remove(indexOfHigherPriority);
+        } */
+        return this.list.remove(0);
     }
     public Boolean swapNode(Node node){
         for(int index=0; index<this.list.size(); index++){
@@ -31,8 +31,14 @@ public class PriorityList {
         }
         return false;
     }
-    public Boolean add(Node node){
-        return this.list.add(node);
+    public void add(Node node){
+        int index=0;
+        for(index=0; index<this.list.size(); index++){
+            if(this.list.get(index).getCost() > node.getCost()){
+                break;
+            }
+        }
+        this.list.add(index, node);
     }
     public Boolean isEmpty(){
         return this.list.isEmpty();

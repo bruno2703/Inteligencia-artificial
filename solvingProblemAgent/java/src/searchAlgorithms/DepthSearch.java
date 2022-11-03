@@ -1,22 +1,21 @@
-package src.search;
+package src.searchAlgorithms;
 
-import java.util.Queue;
+import java.util.Stack;
 
+import src.auxiliarySearchStructures.Node;
+import src.auxiliarySearchStructures.Solution;
 import src.graph.Map;
 import src.graph.State;
 import src.graph.Transition;
-import src.searchStructures.Node;
-import src.searchStructures.Solution;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
-public class SearchInWidth{
-    private Queue<Node> edge;
+public class DepthSearch{
+    private Stack<Node> edge;
     private ArrayList<State> exploiters;
 
-    public SearchInWidth(){
-        this.edge = new LinkedList<Node>();
+    public DepthSearch(){
+        this.edge = new Stack<Node>();
         this.exploiters = new ArrayList<State>(); 
     }
     public Solution performSearch(Map map, String startingPoint, String destination){
@@ -41,7 +40,7 @@ public class SearchInWidth{
     }
     public Node recursiveSearch(State destinationState, Solution solution){
         if(!edge.isEmpty()){
-           Node parentNode = edge.poll();
+           Node parentNode = edge.pop();
            this.exploiters.add(parentNode.getState());
            for(Transition currentTransition: parentNode.getState().getAdjacentList()){
                 Node childNode = new Node(parentNode, currentTransition.getNextCity(), 
